@@ -25,8 +25,10 @@ example (h: P → Q)(h2: P): Q := by
   apply h at h2
   trivial
 
-example (h: P → Q)(h2: Q → R): P → R := by sorry
-
+example (h: P → Q)(h2: Q → R): P → R := by
+  intro hp
+  have hq : Q := h hp
+  exact h2 hq
 
 /-!
 ## `apply` is flexible
